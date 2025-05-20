@@ -29,8 +29,8 @@ public class Date implements Serializable {
 
     public int getNumSemaine(){
         Calendar date = Calendar.getInstance();
-        date.set (chJour, chMois-1, chAnnee);
-        return date.get (Calendar.DAY_OF_WEEK);
+        date.set (chAnnee, chMois-1, chJour);
+        return date.get (Calendar.WEEK_OF_YEAR);
     }
 
     /**
@@ -110,16 +110,12 @@ public class Date implements Serializable {
         return chAnnee;
     }
 
-    public int getJour() {
-        return chJour;
-    }
+    public int getJour() {return chJour;}
 
-    public int getMois() {
-        return chMois;
-    }
+    public int getMois() {return chMois;}
+
     public String toString () {
         return  chJour + " " + chMois + " " +chAnnee;
     }
-
 
 }

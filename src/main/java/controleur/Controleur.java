@@ -8,6 +8,7 @@ import javafx.scene.layout.GridPane;
 import modele.*;
 import vue.GridPaneFormulaireReservation;
 import vue.HBoxRoot;
+import vue.VBoxAffichagePlanning;
 
 
 public class Controleur implements EventHandler{
@@ -18,6 +19,7 @@ public class Controleur implements EventHandler{
     public void handle(Event event) {
         PlanningCollection planning = HBoxRoot.getPlanning();
         GridPaneFormulaireReservation reservationPane = HBoxRoot.getReservationPane();
+        VBoxAffichagePlanning affichagePlanning =HBoxRoot.getAffichagePlanning();
 
         //la source de event est un ToggleButton du calendrier
         if (event.getSource() instanceof ToggleButton) {
@@ -45,8 +47,6 @@ public class Controleur implements EventHandler{
             ComboBox heureFin = reservationPane.heureFin;
             ComboBox minuteFin = reservationPane.minuteFin;
 
-            Button boutonEnregistrer = (Button) event.getSource();
-
             int heureD = heureDepart.getSelectionModel().getSelectedIndex()+6;
             int minuteD = minuteDepart.getSelectionModel().getSelectedIndex()*15;
             int heureF = heureFin.getSelectionModel().getSelectedIndex()+6;
@@ -64,13 +64,17 @@ public class Controleur implements EventHandler{
 
                 HBoxRoot.getPlanning().ajout(reservation);
                 System.out.println(reservation);
+                System.out.println(HBoxRoot.getPlanning().toString());
 
             } catch (ExceptionPlanning e) {
                 throw new RuntimeException(e);
             }
 
-            //
+            affichagePlanning.setNumSemaineSelectionnee(date);
 
         }
+//        if (event.getSource() instanceof .......){
+//            //
+//        }
     }
 }

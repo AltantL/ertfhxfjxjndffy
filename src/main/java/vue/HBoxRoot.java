@@ -12,6 +12,7 @@ public class HBoxRoot extends HBox {
     private static Controleur controleur;
     private static GridPane calendrierPane;
     private static GridPaneFormulaireReservation reservationPane;
+    private static VBoxAffichagePlanning affichagePlanning;
 
     public HBoxRoot() {
 
@@ -21,10 +22,11 @@ public class HBoxRoot extends HBox {
         controleur = new Controleur();
         calendrierPane = new GridPane();
         reservationPane = new GridPaneFormulaireReservation();
+        affichagePlanning = new VBoxAffichagePlanning();
 
 
         VBoxCalendrier vBoxCalendrier = new VBoxCalendrier();
-        this.getChildren().addAll(vBoxCalendrier, reservationPane, calendrierPane);
+        this.getChildren().addAll(vBoxCalendrier, reservationPane, calendrierPane, affichagePlanning);
     }
 
     public static PlanningCollection getPlanning(){
@@ -42,5 +44,7 @@ public class HBoxRoot extends HBox {
     public static GridPaneFormulaireReservation getReservationPane(){
         return reservationPane;
     }
+
+    public static VBoxAffichagePlanning getAffichagePlanning(){return affichagePlanning;}
 
 }

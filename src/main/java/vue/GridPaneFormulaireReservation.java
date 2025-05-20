@@ -1,11 +1,9 @@
 package vue;
 
-import controleur.Controleur;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import constantes.ConstantesCalendrier;
 import modele.Date;
-import modele.DateCalendrier;
 import modele.PlanningCollection;
 
 public class GridPaneFormulaireReservation extends GridPane implements ConstantesCalendrier {
@@ -37,24 +35,20 @@ public class GridPaneFormulaireReservation extends GridPane implements Constante
 
         textField = new TextField();
 
-
-        Label labelDebutant = new Label("Debutant");
-        Label labelMoyen  = new Label("Moyen");
-        Label labelAvance = new Label("Avancé");
-        Label labelExpert = new Label("Expert");
-
         radioGroup = new ToggleGroup();
 
-        RadioButton radioButtonDebutant = new RadioButton();
-        RadioButton radioButtonMoyen = new RadioButton();
-        RadioButton radioButtonAvance = new RadioButton();
-        RadioButton radioButtonExpert = new RadioButton();
+        RadioButton radioButtonDebutant = new RadioButton("_"+"Debutant");
+        radioButtonDebutant.setSelected(true);
+        RadioButton radioButtonMoyen = new RadioButton("_"+"Moyen");
+        RadioButton radioButtonAvance = new RadioButton("_"+"Avancé");
+        RadioButton radioButtonExpert = new RadioButton("_"+"Expert");
 
         radioGroup.getToggles().addAll(radioButtonDebutant, radioButtonMoyen, radioButtonAvance, radioButtonExpert);
 
         heureDepart = peupleComboBox(HEURES);
         minuteDepart = peupleComboBox(MINUTES);
         heureFin = peupleComboBox(HEURES);
+        heureFin.setValue("8");
         minuteFin = peupleComboBox(MINUTES);
         
         Label lableDe = new Label("de");
@@ -88,12 +82,6 @@ public class GridPaneFormulaireReservation extends GridPane implements Constante
         this.add(radioButtonMoyen, 3, 2,1,1);
         this.add(radioButtonAvance, 1, 3,1,1);
         this.add(radioButtonExpert, 3, 3,1,1);
-
-        //Nom Radio Button
-        this.add(labelDebutant, 2, 2,1,1);
-        this.add(labelMoyen, 4, 2,1,1);
-        this.add(labelAvance, 2, 3,1,1);
-        this.add(labelExpert, 4, 3,1,1);
 
         //horaire
         this.add(heureDepart, 2, 4,1,1);
