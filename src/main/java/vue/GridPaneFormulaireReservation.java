@@ -130,6 +130,5 @@ public class GridPaneFormulaireReservation extends GridPane implements Constante
         dateReserve = date;
         labelDate.setText(date.getJour() + " " + MOIS[date.getMois()-1] + " " +
                 date.getAnnee());
-
     }
 }

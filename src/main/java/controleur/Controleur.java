@@ -4,12 +4,15 @@ import exception.ExceptionPlanning;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
 import modele.*;
 import vue.GridPaneFormulaireReservation;
 import vue.HBoxRoot;
 
 
 public class Controleur implements EventHandler{
+
+    PlanningCollection planning;
 
     @Override
     public void handle(Event event) {
@@ -44,10 +47,10 @@ public class Controleur implements EventHandler{
 
             Button boutonEnregistrer = (Button) event.getSource();
 
-            int heureD = heureDepart.getSelectionModel().getSelectedIndex();
-            int minuteD = minuteDepart.getSelectionModel().getSelectedIndex();
-            int heureF = heureFin.getSelectionModel().getSelectedIndex();
-            int minuteF = minuteFin.getSelectionModel().getSelectedIndex();
+            int heureD = heureDepart.getSelectionModel().getSelectedIndex()+6;
+            int minuteD = minuteDepart.getSelectionModel().getSelectedIndex()*15;
+            int heureF = heureFin.getSelectionModel().getSelectedIndex()+6;
+            int minuteF = minuteFin.getSelectionModel().getSelectedIndex()*15;
 
             Horaire horaire1 = new Horaire(heureD,minuteD);
             Horaire horaire2 = new Horaire(heureF,minuteF);
@@ -57,10 +60,16 @@ public class Controleur implements EventHandler{
             PlageHoraire plageHoraire = null;
             try {
                 plageHoraire = new PlageHoraire(horaire1,horaire2);
-                Reservation reservation = new Reservation(textField.getAccessibleText(), date, plageHoraire);
+                Reservation reservation = new Reservation(textField.getText(), date, plageHoraire);
+
+                HBoxRoot.getPlanning().ajout(reservation);
+                System.out.println(reservation);
+
             } catch (ExceptionPlanning e) {
                 throw new RuntimeException(e);
             }
+
+            //
 
         }
     }

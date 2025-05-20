@@ -24,8 +24,7 @@ public class HBoxRoot extends HBox {
 
 
         VBoxCalendrier vBoxCalendrier = new VBoxCalendrier();
-        GridPaneFormulaireReservation gridPaneFormulaireReservation = new GridPaneFormulaireReservation();
-        this.getChildren().addAll(vBoxCalendrier, gridPaneFormulaireReservation);
+        this.getChildren().addAll(vBoxCalendrier, reservationPane, calendrierPane);
     }
 
     public static PlanningCollection getPlanning(){
